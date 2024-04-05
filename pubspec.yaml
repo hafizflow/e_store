@@ -1,0 +1,70 @@
+name: e_store
+description: "A new Flutter e-commerce project. Made with Flutter, Dart, Firebase and GetX."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+
+# - - - - - - - - PACKAGES - - - - - - - - #
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Utility Packages
+
+  # Icons
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.6
+
+  # Stage management
+  get: ^4.6.6
+
+  # Product Specific
+
+
+
+# - - - - - - - - PACKAGES END - - - - - - - - #
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_lints: ^3.0.2
+
+
+flutter:
+  uses-material-design: true
+
+
+  # - - - - - - - - LOCAL ASSETS - - - - - - - - #
+  assets:
+    - assets/logos/
+    - assets/images/
+    - assets/icons/brands/
+
+
+
+  # - - - - - - - - LOCAL FONTS - - - - - - - - #
+  fonts:
+     - family: Poppins
+       fonts:
+         - asset: assets/fonts/poppins.light.ttf
+           weight: 300
+         - asset: assets/fonts/poppins.regular.ttf
+           weight: 400
+         - asset: assets/fonts/poppins.medium.ttf
+           weight: 500
+         - asset: assets/fonts/poppins.italic.ttf
+#           style: : italic
+         - asset: assets/fonts/poppins.medium-italic.ttf
+           weight: 500
+#           style: : italic
+         - asset: assets/fonts/poppins.semibold.ttf
+           weight: 600
+         - asset: assets/fonts/poppins.bold.ttf
+           weight: 800
+  
