@@ -22,6 +22,7 @@ dependencies:
   another_flushbar: ^1.12.30
   fluttertoast: ^8.2.4
   flutter_native_splash: ^2.4.0
+  smooth_page_indicator: ^1.1.0
 
 
   # Icons
@@ -52,7 +53,7 @@ flutter:
   # - - - - - - - - LOCAL ASSETS - - - - - - - - #
   assets:
     - assets/logos/
-    - assets/images/
+    - assets/images/on_boarding_images/
     - assets/icons/brands/
 
 
@@ -61,19 +62,19 @@ flutter:
   fonts:
      - family: Poppins
        fonts:
-         - asset: assets/fonts/poppins.light.ttf
+         - asset: assets/fonts/Poppins-Light.ttf
            weight: 300
-         - asset: assets/fonts/poppins.regular.ttf
+         - asset: assets/fonts/Poppins-Regular.ttf
            weight: 400
-         - asset: assets/fonts/poppins.medium.ttf
+         - asset: assets/fonts/Poppins-Medium.ttf
            weight: 500
-         - asset: assets/fonts/poppins.italic.ttf
+         - asset: assets/fonts/Poppins-Italic.ttf
 #           style: : italic
-         - asset: assets/fonts/poppins.medium-italic.ttf
+         - asset: assets/fonts/Poppins-MediumItalic.ttf
            weight: 500
 #           style: : italic
-         - asset: assets/fonts/poppins.semibold.ttf
+         - asset: assets/fonts/Poppins-SemiBold.ttf
            weight: 600
-         - asset: assets/fonts/poppins.bold.ttf
+         - asset: assets/fonts/Poppins-Bold.ttf
            weight: 800
   
