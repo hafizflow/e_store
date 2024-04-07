@@ -6,7 +6,7 @@ import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/text_strings.dart';
-import '../../controllers/onboarding_controller.dart';
+import '../../controllers/onboarding/onboarding_controller.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -25,18 +25,18 @@ class OnBoardingScreen extends StatelessWidget {
             children: const [
               OnBoardingPage(
                 image: EImages.onBoarding1,
-                title: EText.onBoardingTitle1,
-                subTitle: EText.onBoardingSubTitle1,
+                title: ETexts.onBoardingTitle1,
+                subTitle: ETexts.onBoardingSubTitle1,
               ),
               OnBoardingPage(
                 image: EImages.onBoarding2,
-                title: EText.onBoardingTitle2,
-                subTitle: EText.onBoardingSubTitle2,
+                title: ETexts.onBoardingTitle2,
+                subTitle: ETexts.onBoardingSubTitle2,
               ),
               OnBoardingPage(
                 image: EImages.onBoarding3,
-                title: EText.onBoardingTitle3,
-                subTitle: EText.onBoardingSubTitle3,
+                title: ETexts.onBoardingTitle3,
+                subTitle: ETexts.onBoardingSubTitle3,
               ),
             ],
           ),

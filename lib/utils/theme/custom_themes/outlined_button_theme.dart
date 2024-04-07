@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
 
-class EOutlinedButtonTheme {
-  EOutlinedButtonTheme._();
+import '../../constants/colors.dart';
+import '../../constants/sizes.dart';
 
-  /// -- Light Theme
+/* -- Light & Dark Outlined Button Themes -- */
+class EOutlinedButtonTheme {
+  EOutlinedButtonTheme._(); //Eo avoid creating instances
+
+  /* -- Light Theme -- */
   static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
-      foregroundColor: Colors.black,
-      side: const BorderSide(color: Colors.blue),
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+      foregroundColor: EColors.dark,
+      side: const BorderSide(color: EColors.buttonSecondary),
       textStyle: const TextStyle(
-        fontSize: 16,
-        color: Colors.black,
-        fontWeight: FontWeight.w600,
-      ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          fontSize: 16, color: EColors.black, fontWeight: FontWeight.w600),
+      padding: const EdgeInsets.symmetric(
+          vertical: ESizes.buttonHeight, horizontal: 20),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(ESizes.buttonRadius)),
     ),
   );
 
-  /// -- Dark Theme
+  /* -- Dark Theme -- */
   static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      elevation: 0,
-      foregroundColor: Colors.white,
-      side: const BorderSide(color: Colors.blueAccent),
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+      foregroundColor: EColors.light,
+      side: const BorderSide(color: EColors.borderPrimary),
       textStyle: const TextStyle(
-        fontSize: 16,
-        color: Colors.white,
-        fontWeight: FontWeight.w600,
-      ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          fontSize: 16, color: EColors.textWhite, fontWeight: FontWeight.w600),
+      padding: const EdgeInsets.symmetric(
+          vertical: ESizes.buttonHeight, horizontal: 20),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(ESizes.buttonRadius)),
     ),
   );
 }

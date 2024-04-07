@@ -1,6 +1,4 @@
 class ESizes {
-  ESizes._();
-
   // Padding and margin sizes
   static const double xs = 4.0;
   static const double sm = 8.0;
@@ -12,12 +10,12 @@ class ESizes {
   static const double iconXs = 12.0;
   static const double iconSm = 16.0;
   static const double iconMd = 24.0;
-  static const double iconXl = 32.0;
+  static const double iconLg = 32.0;
 
   // Font sizes
   static const double fontSizeSm = 14.0;
   static const double fontSizeMd = 16.0;
-  static const double fontSizeXl = 18.0;
+  static const double fontSizeLg = 18.0;
 
   // Button sizes
   static const double buttonHeight = 18.0;
@@ -25,13 +23,13 @@ class ESizes {
   static const double buttonWidth = 120.0;
   static const double buttonElevation = 4.0;
 
-  // Appbar height
+  // AppBar height
   static const double appBarHeight = 56.0;
 
-  // Image size
+  // Image sizes
   static const double imageThumbSize = 80.0;
 
-  // Default spacing between section
+  // Default spacing between sections
   static const double defaultSpace = 24.0;
   static const double spaceBtwItems = 16.0;
   static const double spaceBtwSections = 32.0;
@@ -47,7 +45,7 @@ class ESizes {
   // Product item dimensions
   static const double productImageSize = 120.0;
   static const double productImageRadius = 16.0;
-  static const double productImageHeight = 160.0;
+  static const double productItemHeight = 160.0;
 
   // Input field
   static const double inputFieldRadius = 12.0;
@@ -60,8 +58,8 @@ class ESizes {
   static const double cardRadiusXs = 6.0;
   static const double cardElevation = 2.0;
 
-  // Image casual height
-  static const double imageCasualHeight = 200.0;
+  // Image carousel height
+  static const double imageCarouselHeight = 200.0;
 
   // Loading indicator size
   static const double loadingIndicatorSize = 36.0;

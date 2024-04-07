@@ -1,4 +1,4 @@
-import 'package:e_store/features/authentication/controllers/onboarding_controller.dart';
+import 'package:e_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
