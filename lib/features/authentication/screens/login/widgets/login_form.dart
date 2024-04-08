@@ -1,4 +1,6 @@
+import 'package:e_store/features/authentication/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -51,7 +53,9 @@ class ELoginForm extends StatelessWidget {
 
                 /// Forget Password
                 TextButton(
-                    onPressed: () {}, child: const Text(ETexts.forgetPassword))
+                  onPressed: () {},
+                  child: const Text(ETexts.forgetPassword),
+                )
               ],
             ),
 
@@ -72,7 +76,7 @@ class ELoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const SignupScreen()),
                 child: const Text(ETexts.createAccount),
               ),
             ),
