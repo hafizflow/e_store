@@ -15,9 +15,13 @@ class ETermsAndConditionCheckbox extends StatelessWidget {
     final dark = EHelperFunctions.isDarkMode(context);
     return Row(
       children: [
-        Checkbox(value: true, onChanged: (value) {}),
+        SizedBox(
+          width: 24,
+          child: Checkbox(value: true, onChanged: (value) {}),
+        ),
         const SizedBox(width: ESizes.spaceBtwItems),
         Text.rich(
+          overflow: TextOverflow.fade,
           TextSpan(
             children: [
               TextSpan(

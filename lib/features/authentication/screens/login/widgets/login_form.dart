@@ -1,5 +1,6 @@
 import 'package:e_store/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:e_store/features/authentication/screens/signup/signup.dart';
+import 'package:e_store/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -47,7 +48,10 @@ class ELoginForm extends StatelessWidget {
                 /// Remember Me
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    SizedBox(
+                        width: 24,
+                        child: Checkbox(value: true, onChanged: (value) {})),
+                    const SizedBox(width: ESizes.spaceBtwItems - 4),
                     const Text(ETexts.rememberMe),
                   ],
                 ),
@@ -66,7 +70,7 @@ class ELoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const NavigationMenu()),
                 child: const Text(ETexts.signIn),
               ),
             ),
