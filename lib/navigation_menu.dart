@@ -1,3 +1,4 @@
+import 'package:e_store/features/shop/screens/home_screen.dart';
 import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    Container(color: Colors.deepOrange),
+    const HomeScreen(),
     Container(color: Colors.purple),
     Container(color: Colors.blue),
     Container(color: Colors.teal),
