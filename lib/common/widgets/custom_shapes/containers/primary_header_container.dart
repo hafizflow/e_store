@@ -22,6 +22,7 @@ class EPrimaryHeaderContainer extends StatelessWidget {
           height: 400,
           child: Stack(
             children: [
+              /// Background Custom Shapes
               Positioned(
                 top: -150,
                 right: -250,
