@@ -1,5 +1,6 @@
 import 'package:e_store/features/shop/screens/widgets/home_appbar.dart';
 import 'package:e_store/features/shop/screens/widgets/home_categories.dart';
+import 'package:e_store/features/shop/screens/widgets/promo_slider.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
@@ -49,6 +50,12 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+
+            /// Body
+            Padding(
+              padding: EdgeInsets.all(ESizes.defaultSpace),
+              child: EPromoSlider(),
+            )
           ],
         ),
       ),

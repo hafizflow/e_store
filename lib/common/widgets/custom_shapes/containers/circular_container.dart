@@ -10,12 +10,14 @@ class ECircularContainer extends StatelessWidget {
     this.height = 400,
     this.borderRadius = 400,
     this.padding = 0,
+    this.margin,
     this.backgroundColor = EColors.white,
   });
 
   final double? width;
   final double? height;
   final double padding;
+  final EdgeInsets? margin;
   final double borderRadius;
   final Widget? child;
   final Color backgroundColor;
@@ -23,9 +25,10 @@ class ECircularContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: width,
-      width: height,
+      height: height,
+      width: width,
       padding: EdgeInsets.all(padding),
+      margin: margin,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: backgroundColor,

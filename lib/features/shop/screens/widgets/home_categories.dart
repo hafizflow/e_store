@@ -14,7 +14,7 @@ class EHomeCategories extends StatelessWidget {
       height: 80,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return const EVerticalImageText(
