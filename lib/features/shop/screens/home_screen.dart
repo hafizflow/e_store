@@ -1,3 +1,4 @@
+import 'package:e_store/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:e_store/features/shop/screens/widgets/home_appbar.dart';
 import 'package:e_store/features/shop/screens/widgets/home_categories.dart';
 import 'package:e_store/features/shop/screens/widgets/promo_slider.dart';
@@ -5,8 +6,10 @@ import 'package:flutter/material.dart';
 
 import '../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../common/widgets/layouts/grid_layout.dart';
 import '../../../common/widgets/texts/section_heading.dart';
 import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,11 +17,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            EPrimaryHeaderContainer(
+            const EPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// Appbar
@@ -53,8 +56,26 @@ class HomeScreen extends StatelessWidget {
 
             /// Body
             Padding(
-              padding: EdgeInsets.all(ESizes.defaultSpace),
-              child: EPromoSlider(),
+              padding: const EdgeInsets.all(ESizes.defaultSpace),
+              child: Column(
+                children: [
+                  /// Promo slider
+                  const EPromoSlider(
+                    banners: [
+                      EImages.promoBanner1,
+                      EImages.promoBanner2,
+                      EImages.promoBanner3,
+                    ],
+                  ),
+                  const SizedBox(height: ESizes.spaceBtwSections),
+
+                  /// Popular products
+                  EGridLayout(
+                    itemBuilder: (_, index) => const EProductCardVertical(),
+                    itemCount: 2,
+                  ),
+                ],
+              ),
             )
           ],
         ),

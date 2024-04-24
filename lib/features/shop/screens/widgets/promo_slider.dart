@@ -5,14 +5,16 @@ import 'package:get/get.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/circular_container.dart';
 import '../../../../common/widgets/images/e_rounded_image.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../controllers/home_controller.dart';
 
 class EPromoSlider extends StatelessWidget {
   const EPromoSlider({
     super.key,
+    required this.banners,
   });
+
+  final List<String> banners;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +23,7 @@ class EPromoSlider extends StatelessWidget {
     return Column(
       children: [
         CarouselSlider(
-          items: const [
-            ERoundedImage(imageUrl: EImages.promoBanner1),
-            ERoundedImage(imageUrl: EImages.promoBanner2),
-            ERoundedImage(imageUrl: EImages.promoBanner3),
-          ],
+          items: banners.map((url) => ERoundedImage(imageUrl: url)).toList(),
           options: CarouselOptions(
             viewportFraction: 1,
             onPageChanged: (index, _) => controller.updatePageIndicator(index),
@@ -37,7 +35,7 @@ class EPromoSlider extends StatelessWidget {
             () => Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < banners.length; i++)
                   ECircularContainer(
                     width: 20,
                     height: 4,
