@@ -10,7 +10,7 @@ class EVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = EColors.white,
-    this.backgroundColor = EColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 
