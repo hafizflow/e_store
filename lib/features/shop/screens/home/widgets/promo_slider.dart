@@ -3,10 +3,10 @@ import 'package:e_store/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/widgets/custom_shapes/containers/circular_container.dart';
-import '../../../../common/widgets/images/e_rounded_image.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../controllers/home_controller.dart';
+import '../../../../../common/widgets/custom_shapes/containers/circular_container.dart';
+import '../../../../../common/widgets/images/e_rounded_image.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../controllers/home_controller.dart';
 
 class EPromoSlider extends StatelessWidget {
   const EPromoSlider({

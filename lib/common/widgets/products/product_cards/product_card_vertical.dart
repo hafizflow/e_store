@@ -9,6 +9,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../icons/e_circular_icon.dart';
+import '../../texts/brand_title_text_with_verfied_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
@@ -77,66 +78,58 @@ class EProductCardVertical extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(height: ESizes.spaceBtwItems / 2),
+
             /// Details
-            Padding(
-              padding: const EdgeInsets.only(left: ESizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: ESizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const EProductTitleText(
+                  EProductTitleText(
                     title: 'Green Nike Air Shoes',
                     smallSize: true,
                   ),
-                  const SizedBox(height: ESizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(width: ESizes.sm),
-                      const Icon(
-                        Iconsax.verify5,
-                        size: ESizes.iconXs,
-                        color: EColors.primary,
-                      ),
-                    ],
-                  ),
-                  // const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Price
-                      const EProductPriceText(
-                        price: '35',
-                        isLarge: false,
-                      ),
-
-                      /// Add to cart
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: EColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(ESizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(ESizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: ESizes.iconLg * 1.2,
-                          height: ESizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: EColors.white),
-                          ),
-                        ),
-                      ),
-                    ],
+                  SizedBox(height: ESizes.spaceBtwItems / 2),
+                  EBrandTitleTextWithVerifiedIcon(
+                    title: 'Nike',
                   ),
                 ],
               ),
-            )
+            ),
+
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price
+                const Padding(
+                  padding: EdgeInsets.only(left: ESizes.sm),
+                  child: EProductPriceText(
+                    price: '35',
+                    isLarge: false,
+                  ),
+                ),
+
+                /// Add to cart
+                Container(
+                  decoration: const BoxDecoration(
+                    color: EColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(ESizes.cardRadiusMd),
+                      bottomRight: Radius.circular(ESizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: ESizes.iconLg * 1.2,
+                    height: ESizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(Iconsax.add, color: EColors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
