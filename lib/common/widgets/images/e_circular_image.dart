@@ -29,7 +29,7 @@ class ECircularImage extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      padding: const EdgeInsets.all(ESizes.sm),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: backgroundColor != null
             ? backgroundColor!

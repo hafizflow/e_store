@@ -23,7 +23,10 @@ class EAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: ESizes.defaultSpace),
+      padding: const EdgeInsets.only(
+        left: ESizes.defaultSpace / 2,
+        right: ESizes.defaultSpace,
+      ),
       child: AppBar(
         automaticallyImplyLeading: false,
         leading: showBackArrow

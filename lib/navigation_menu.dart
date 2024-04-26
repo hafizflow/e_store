@@ -1,3 +1,4 @@
+import 'package:e_store/features/personalization/screens/settings/settings.dart';
 import 'package:e_store/features/shop/screens/home/home_screen.dart';
 import 'package:e_store/features/shop/screens/wishlist/wishlist_screen.dart';
 import 'package:e_store/utils/constants/colors.dart';
@@ -48,6 +49,6 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     const WishListScreen(),
-    Container(color: Colors.teal),
+    const SettingScreen(),
   ];
 }

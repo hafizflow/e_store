@@ -50,7 +50,8 @@ class HomeScreen extends StatelessWidget {
                         EHomeCategories(),
                       ],
                     ),
-                  )
+                  ),
+                  SizedBox(height: ESizes.spaceBtwSections)
                 ],
               ),
             ),

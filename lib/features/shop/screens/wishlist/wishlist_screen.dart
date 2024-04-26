@@ -33,12 +33,12 @@ class WishListScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(ESizes.defaultSpace),
+          padding: const EdgeInsets.all(ESizes.defaultSpace),
           child: Column(
             children: [
               EGridLayout(
                 itemCount: 8,
-                itemBuilder: (_, index) => EProductCardVertical(),
+                itemBuilder: (_, index) => const EProductCardVertical(),
               )
             ],
           ),

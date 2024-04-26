@@ -243,7 +243,7 @@ class EImages {
   static const String banner8 = "assets/images/banners/banner_8.jpg";
 
   //Profile
-  static const String user = "assets/images/content/user.png";
+  static const String user = "assets/images/user/user.png";
 
   // -- Payment Methods
   static const String applePay = "assets/icons/payment_methods/apple-pay.png";
