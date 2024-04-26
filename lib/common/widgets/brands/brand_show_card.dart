@@ -44,7 +44,7 @@ class EBrandShowcase extends StatelessWidget {
         height: 100,
         backgroundColor: EHelperFunctions.isDarkMode(context)
             ? EColors.darkerGrey
-            : EColors.light,
+            : EColors.grey.withOpacity(.6),
         margin: const EdgeInsets.only(right: ESizes.sm),
         padding: const EdgeInsets.all(ESizes.md),
         child: Image(

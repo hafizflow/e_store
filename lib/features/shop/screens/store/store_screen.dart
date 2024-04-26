@@ -10,9 +10,7 @@ import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
-import '../../../../common/widgets/brands/brand_show_card.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -22,9 +20,6 @@ class StoreScreen extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-        backgroundColor:
-            EHelperFunctions.isDarkMode(context) ? EColors.dark : EColors.light,
-
         /// -- Appbar
         appBar: EAppBar(
           title: Text(
@@ -56,6 +51,7 @@ class StoreScreen extends StatelessWidget {
                         text: 'Search in Store',
                         padding: EdgeInsets.zero,
                         showBackground: false,
+                        showBorder: true,
                       ),
                       const SizedBox(height: ESizes.spaceBtwSections),
 

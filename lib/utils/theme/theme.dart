@@ -1,3 +1,4 @@
+import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:e_store/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:e_store/utils/theme/custom_themes/checkbox_theme.dart';
@@ -13,7 +14,7 @@ class EAppTheme {
 
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: EColors.light,
     primaryColor: Colors.blue,
     fontFamily: 'Poppins',
     useMaterial3: true,
@@ -28,7 +29,7 @@ class EAppTheme {
   );
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: EColors.dark,
     primaryColor: Colors.blue,
     fontFamily: 'Poppins',
     useMaterial3: true,

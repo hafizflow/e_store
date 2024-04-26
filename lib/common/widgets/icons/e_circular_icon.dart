@@ -34,12 +34,13 @@ class ECircularIcon extends StatelessWidget {
         color: backgroundColor != null
             ? backgroundColor!
             : dark
-                ? EColors.black.withOpacity(0.9)
-                : EColors.white.withOpacity(0.9),
+                ? EColors.black.withOpacity(.9)
+                : EColors.white.withOpacity(.9),
       ),
       child: IconButton(
         onPressed: onPressed,
-        icon: Icon(icon, color: color, size: size),
+        icon: Icon(icon,
+            color: color ?? (dark ? EColors.white : EColors.black), size: size),
       ),
     );
   }

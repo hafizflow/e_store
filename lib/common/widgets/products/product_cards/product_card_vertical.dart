@@ -34,6 +34,7 @@ class EProductCardVertical extends StatelessWidget {
               : EColors.white,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Thumbnail, Wishlist Button, Discount Tag
             ERoundedContainer(
@@ -87,7 +88,7 @@ class EProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   EProductTitleText(
-                    title: 'Green Nike Air Shoes',
+                    title: 'Green Nike Air Shoes Whit Black Stripe',
                     smallSize: true,
                   ),
                   SizedBox(height: ESizes.spaceBtwItems / 2),
@@ -106,7 +107,7 @@ class EProductCardVertical extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.only(left: ESizes.sm),
                   child: EProductPriceText(
-                    price: '35',
+                    price: '35.0',
                     isLarge: false,
                   ),
                 ),

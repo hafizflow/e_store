@@ -12,7 +12,7 @@ class ESearchContainer extends StatelessWidget {
     required this.text,
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
-    this.showBorder = true,
+    this.showBorder = false,
     this.onTap,
     this.padding = const EdgeInsets.symmetric(horizontal: ESizes.defaultSpace),
   });
