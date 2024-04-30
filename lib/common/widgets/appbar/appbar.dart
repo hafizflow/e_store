@@ -10,7 +10,7 @@ import '../../../utils/constants/colors.dart';
 class EAppBar extends StatelessWidget implements PreferredSize {
   const EAppBar({
     super.key,
-    required this.title,
+    this.title,
     this.showBackArrow = false,
     this.leadingIcon,
     this.action,
@@ -38,8 +38,8 @@ class EAppBar extends StatelessWidget implements PreferredSize {
                 icon: Icon(
                   Iconsax.arrow_left,
                   color: EHelperFunctions.isDarkMode(context)
-                      ? EColors.white
-                      : EColors.black,
+                      ? EColors.light
+                      : EColors.dark,
                 ))
             : leadingIcon != null
                 ? IconButton(
