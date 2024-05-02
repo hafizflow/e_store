@@ -4,8 +4,10 @@ import 'package:e_store/features/shop/screens/product_details/widgets/product_at
 import 'package:e_store/features/shop/screens/product_details/widgets/product_details_image_slider.dart';
 import 'package:e_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:e_store/features/shop/screens/product_details/widgets/rating_and_share.dart';
+import 'package:e_store/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -17,6 +19,7 @@ class ProductDetails extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const EBottomAddToCart(),
       body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         child: Column(
           children: [
             /// -- Product Image Slider
@@ -80,7 +83,9 @@ class ProductDetails extends StatelessWidget {
                         showActionButton: false,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(
+                          () => const ProductReviewsScreen(),
+                        ),
                         icon: const Icon(Iconsax.arrow_right_3, size: 18),
                       ),
                     ],
