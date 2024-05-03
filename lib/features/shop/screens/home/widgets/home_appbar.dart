@@ -32,12 +32,7 @@ class EHomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      action: [
-        ECartCounterIcon(
-          onPressed: () {},
-          iconColor: EColors.white,
-        ),
-      ],
+      action: const [ECartCounterIcon(iconColor: EColors.white)],
     );
   }
 }

@@ -1,18 +1,18 @@
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/screens/cart/cart_screen.dart';
 import '../../../../utils/constants/colors.dart';
 
 class ECartCounterIcon extends StatelessWidget {
   const ECartCounterIcon({
     super.key,
     this.iconColor,
-    required this.onPressed,
   });
 
   final Color? iconColor;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ECartCounterIcon extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => const CartScreen()),
           icon: Icon(
             Iconsax.shopping_bag,
             color: iconColor != null
@@ -37,7 +37,9 @@ class ECartCounterIcon extends StatelessWidget {
             height: 18,
             width: 18,
             decoration: BoxDecoration(
-              color: dark ? EColors.white : EColors.black,
+              color: dark
+                  ? EColors.white.withOpacity(.6)
+                  : EColors.black.withOpacity(.6),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
