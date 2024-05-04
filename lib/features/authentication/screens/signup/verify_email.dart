@@ -21,6 +21,7 @@ class VerifyEmail extends StatelessWidget {
           IconButton(
             onPressed: () => Get.offAll(() => const LoginScreen()),
             icon: const Icon(CupertinoIcons.clear),
+            padding: const EdgeInsets.only(right: ESizes.defaultSpace),
           ),
         ],
       ),

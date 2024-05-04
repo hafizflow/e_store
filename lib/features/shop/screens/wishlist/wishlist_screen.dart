@@ -2,7 +2,7 @@ import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/icons/e_circular_icon.dart';
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
 import 'package:e_store/common/widgets/products/product_cards/product_card_vertical.dart';
-import 'package:e_store/features/shop/screens/home/home_screen.dart';
+import 'package:e_store/navigation_menu.dart';
 import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
@@ -27,7 +27,7 @@ class WishListScreen extends StatelessWidget {
             backgroundColor: EHelperFunctions.isDarkMode(context)
                 ? EColors.dark
                 : EColors.light,
-            onPressed: () => Get.to(() => const HomeScreen()),
+            onPressed: () => Get.to(() => const NavigationMenu()),
           ),
         ],
       ),
