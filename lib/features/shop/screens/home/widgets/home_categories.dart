@@ -1,4 +1,6 @@
+import 'package:e_store/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/image_text_widget/vertical_image_text.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -17,9 +19,10 @@ class EHomeCategories extends StatelessWidget {
         itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
-          return const EVerticalImageText(
+          return EVerticalImageText(
             image: EImages.shoeIcon,
-            title: 'Shores for all',
+            title: 'Shores',
+            onTap: () => Get.to(() => const SubCategories()),
           );
         },
       ),
