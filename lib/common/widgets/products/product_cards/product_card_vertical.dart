@@ -101,6 +101,8 @@ class EProductCardVertical extends StatelessWidget {
               ),
             ),
 
+            // Use spacer to utilize all the space to set the price and the cart button at the bottom
+            // This usually happen when product title is in a single line or 2 lines (Max)
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

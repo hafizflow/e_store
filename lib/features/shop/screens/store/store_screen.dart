@@ -4,10 +4,12 @@ import 'package:e_store/common/widgets/custom_shapes/containers/search_container
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
 import 'package:e_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_store/common/widgets/texts/section_heading.dart';
+import 'package:e_store/features/shop/screens/brands/all_brands.dart';
 import 'package:e_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../utils/constants/colors.dart';
@@ -57,7 +59,11 @@ class StoreScreen extends StatelessWidget {
 
                       /// -- Feature bands
                       ESectionHeading(
-                          title: 'Featured Brands', onPressed: () {}),
+                        title: 'Featured Brands',
+                        onPressed: () => Get.to(
+                          () => const AllBrands(),
+                        ),
+                      ),
                       const SizedBox(height: ESizes.spaceBtwItems / 1.5),
 
                       EGridLayout(
