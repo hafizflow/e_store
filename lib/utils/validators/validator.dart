@@ -1,7 +1,15 @@
 class EValidator {
-  // email validator
+  /// Empty text validation
+  static String? validateEmptyText(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required';
+    }
+    return null;
+  }
+
+  /// Email validator
   static String? validateEmail(String? value) {
-    if (value == null || value.isNotEmpty) {
+    if (value == null || value.isEmpty) {
       return 'Email is required';
     }
 
@@ -14,9 +22,9 @@ class EValidator {
     return null;
   }
 
-  // password validator
+  /// Password validator
   static String? validatePassword(String? value) {
-    if (value == null || value.isNotEmpty) {
+    if (value == null || value.isEmpty) {
       return 'Password is required';
     }
 
@@ -42,16 +50,16 @@ class EValidator {
     return null;
   }
 
-  // validate phone number
+  /// Validate phone number
   static String? validatePhoneNumber(String? value) {
-    if (value == null || value.isNotEmpty) {
-      return 'Password is required';
+    if (value == null || value.isEmpty) {
+      return 'Phone number is required';
     }
 
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    final phoneRegExp = RegExp(r'^\d{11}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format ( 10 digit required )';
+      return 'Invalid phone number format ( 11 digit required )';
     }
 
     return null;

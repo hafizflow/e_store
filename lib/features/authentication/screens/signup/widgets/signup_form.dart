@@ -1,11 +1,12 @@
-import 'package:e_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:e_store/features/authentication/screens/signup/widgets/terms_and_condition_checkbox.dart';
+import 'package:e_store/utils/validators/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../../controllers/signup/signup_controller.dart';
 
 class ESignupForm extends StatelessWidget {
   const ESignupForm({
@@ -14,7 +15,10 @@ class ESignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController.instance;
+
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           /// First and Last Name
@@ -22,6 +26,9 @@ class ESignupForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) =>
+                      EValidator.validateEmptyText('First name', value),
                   expands: false,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Iconsax.user),
@@ -32,6 +39,9 @@ class ESignupForm extends StatelessWidget {
               const SizedBox(width: ESizes.spaceBtwInputFields),
               Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) =>
+                      EValidator.validateEmptyText('Last name', value),
                   expands: false,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Iconsax.user),
@@ -45,6 +55,9 @@ class ESignupForm extends StatelessWidget {
 
           /// Username
           TextFormField(
+            controller: controller.userName,
+            validator: (value) =>
+                EValidator.validateEmptyText('Username', value),
             expands: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.user_edit),
@@ -55,6 +68,8 @@ class ESignupForm extends StatelessWidget {
 
           /// Email
           TextFormField(
+            controller: controller.email,
+            validator: (value) => EValidator.validateEmail(value),
             expands: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.direct),
@@ -65,6 +80,8 @@ class ESignupForm extends StatelessWidget {
 
           /// Phone Number
           TextFormField(
+            controller: controller.password,
+            validator: (value) => EValidator.validatePhoneNumber(value),
             expands: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.call),
@@ -75,6 +92,8 @@ class ESignupForm extends StatelessWidget {
 
           /// Password
           TextFormField(
+            controller: controller.password,
+            validator: (value) => EValidator.validatePassword(value),
             expands: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.password_check),
@@ -93,7 +112,7 @@ class ESignupForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
                 child: const Text(ETexts.createAccount),
-                onPressed: () => Get.to(() => const VerifyEmail())),
+                onPressed: () => Get.to(() => controller.signup())),
           ),
         ],
       ),
