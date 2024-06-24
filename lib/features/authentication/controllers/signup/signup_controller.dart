@@ -1,5 +1,6 @@
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/popups/full_screen_loader.dart';
+import 'package:e_store/utils/popups/loaders.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -26,8 +27,10 @@ class SignupController extends GetxController {
 
       // Check Internet Connection
       final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) return;
 
       // Form Validation
+      if (!signupFormKey.currentState!.validate()) return;
 
       // Privacy Policy Check
 
@@ -40,8 +43,10 @@ class SignupController extends GetxController {
       // Move to verify email screen
     } catch (e) {
       // Show some Generic Error to the user
+      ELoaders.errorSnackBar(title: 'Oh snap', message: e.toString());
     } finally {
       //   Remove Loader
+      EFullScreenLoader.stopLoading();
     }
   }
 }

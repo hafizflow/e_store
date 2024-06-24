@@ -1,5 +1,4 @@
 import 'package:e_store/controller_binder.dart';
-import 'package:e_store/features/authentication/screens/onBoarding/onboarding.dart';
 import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
