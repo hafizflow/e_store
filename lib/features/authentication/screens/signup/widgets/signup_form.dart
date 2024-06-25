@@ -2,6 +2,7 @@ import 'package:e_store/features/authentication/screens/signup/widgets/terms_and
 import 'package:e_store/utils/validators/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -80,7 +81,7 @@ class ESignupForm extends StatelessWidget {
 
           /// Phone Number
           TextFormField(
-            controller: controller.password,
+            controller: controller.phoneNumber,
             validator: (value) => EValidator.validatePhoneNumber(value),
             expands: false,
             decoration: const InputDecoration(
@@ -91,16 +92,23 @@ class ESignupForm extends StatelessWidget {
           const SizedBox(height: ESizes.spaceBtwInputFields),
 
           /// Password
-          TextFormField(
-            controller: controller.password,
-            validator: (value) => EValidator.validatePassword(value),
-            expands: false,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
-              label: Text(ETexts.password),
-            ),
-          ),
+          Obx(() => TextFormField(
+                controller: controller.password,
+                validator: (value) => EValidator.validatePassword(value),
+                // expands: false,
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye),
+                  ),
+                  label: const Text(ETexts.password),
+                ),
+              )),
           const SizedBox(height: ESizes.spaceBtwInputFields / 2),
 
           /// Terms & Condition Checkbox
@@ -111,8 +119,9 @@ class ESignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                child: const Text(ETexts.createAccount),
-                onPressed: () => Get.to(() => controller.signup())),
+              child: const Text(ETexts.createAccount),
+              onPressed: () => controller.signup(),
+            ),
           ),
         ],
       ),

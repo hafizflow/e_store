@@ -13,7 +13,6 @@ class EFullScreenLoader {
   /// Parameters:
   /// - text: The text to be displayed in the loading dialog
   /// - animation: The Lottie animation to be shown
-
   static void onLoadingDialog(String text, String animation) {
     showDialog(
       context:

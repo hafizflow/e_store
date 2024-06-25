@@ -1,6 +1,8 @@
 import 'package:e_store/features/authentication/screens/login/login.dart';
 import 'package:e_store/features/authentication/screens/onBoarding/onboarding.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,6 +12,7 @@ class AuthenticationRepository extends GetxController {
 
   /// Variables
   final deviceStorage = GetStorage();
+  final _auth = FirebaseAuth.instance;
 
   /// Called from main.dart on app launch
   @override
@@ -35,6 +38,22 @@ class AuthenticationRepository extends GetxController {
 
   /// [EmailAuthentication] - SignIn
   /// [EmailAuthentication] - REGISTER
+  Future<UserCredential> registerWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseException catch (e) {
+      throw EFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw EFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw EPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Some thing went wrong. Please try again';
+    }
+  }
+
   /// [EmailAuthentication] - ReAuthenticate User
   /// [EmailAuthentication] - MAIL VERIFICATION
   /// [EmailAuthentication] - FORGET PASSWORD

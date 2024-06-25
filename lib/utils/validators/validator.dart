@@ -34,17 +34,17 @@ class EValidator {
     }
 
     // check for upper case letter
-    if (value.contains(RegExp(r'[A-Z]'))) {
+    if (!value.contains(RegExp(r'[A-Z]'))) {
       return 'Password must contain at least one upper case letter';
     }
 
-    // check for upper case letter
-    if (value.contains(RegExp(r'[0-9]'))) {
+    // check for number
+    if (!value.contains(RegExp(r'[0-9]'))) {
       return 'Password must contain at least one number';
     }
 
     // check for special character
-    if (value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+    if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
       return 'Password must contain at least one spacial character';
     }
     return null;

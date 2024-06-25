@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 class ControllerBinder extends Bindings {
   @override
   void dependencies() {
+    Get.put(NetworkManager());
     Get.put(OnBoardingController());
     Get.put(HomeController());
     Get.put(SignupController());
-    Get.put(NetworkManager());
   }
 }

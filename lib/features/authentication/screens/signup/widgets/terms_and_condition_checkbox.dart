@@ -1,4 +1,6 @@
+import 'package:e_store/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -12,12 +14,18 @@ class ETermsAndConditionCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController.instance;
     final dark = EHelperFunctions.isDarkMode(context);
     return Row(
       children: [
         SizedBox(
           width: 24,
-          child: Checkbox(value: true, onChanged: (value) {}),
+          child: Obx(
+            () => Checkbox(
+                value: controller.privacyPolicy.value,
+                onChanged: (_) => controller.privacyPolicy.value =
+                    !controller.privacyPolicy.value),
+          ),
         ),
         const SizedBox(width: ESizes.spaceBtwItems),
         Text.rich(

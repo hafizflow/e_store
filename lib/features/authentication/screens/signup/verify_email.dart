@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 
 import '../../../../utils/constants/text_strings.dart';
 
-class VerifyEmail extends StatelessWidget {
-  const VerifyEmail({super.key});
+class VerifyEmailScreen extends StatelessWidget {
+  const VerifyEmailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
