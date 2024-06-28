@@ -45,6 +45,8 @@ class EImages {
   static const String acerlogo = "assets/icons/brands/acer_logo.png";
 
   // -- Animations
+  static const String successfulRegistrationAnimation =
+      "assets/images/animations/72462-check-register.json";
   static const String docerAnimation =
       "assets/images/animations/141594-animation-of-docer.json";
   static const String productsIllustration =

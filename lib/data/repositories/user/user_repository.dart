@@ -1,7 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_store/features/authentication/models/user_model.dart';
+import 'package:e_store/utils/exceptions/format_exceptions.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import '../../../utils/exceptions/firebase_auth_exceptions.dart';
+import '../../../utils/exceptions/platform_exceptions.dart';
 
 /// Repository class for user-related operations
 class UserRepository extends GetxController {
@@ -15,8 +19,8 @@ class UserRepository extends GetxController {
       await _db.collection("User").doc(user.id).set(user.toJson());
     } on FirebaseException catch (e) {
       throw EFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw EFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const EFormatException();
     } on PlatformException catch (e) {
       throw EPlatformException(e.code).message;
     } catch (e) {

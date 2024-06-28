@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_store/utils/formatters/formatter.dart';
 
 /// Model class represent model data
@@ -69,19 +68,19 @@ class UserModel {
   }
 
   /// Factory method to crate UserModel from a Firebase document snapshot.
-  factory UserModel.fromSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> document) {
-    if (document.data() != null) {
-      final data = document.data();
-      return UserModel(
-        id: document.id,
-        firstName: data?['FirstName'] ?? '',
-        lastName: data?['FirstName'] ?? '',
-        userName: data?['FirstName'] ?? '',
-        email: data?['FirstName'] ?? '',
-        phoneNumber: data?['FirstName'] ?? '',
-        profilePicture: data?['FirstName'] ?? '',
-      );
-    }
-  }
+  // factory UserModel.fromSnapshot(
+  //     DocumentSnapshot<Map<String, dynamic>> document) {
+  //   if (document.data() != null) {
+  //     final data = document.data();
+  //     return UserModel(
+  //       id: document.id,
+  //       firstName: data?['FirstName'] ?? '',
+  //       lastName: data?['FirstName'] ?? '',
+  //       userName: data?['FirstName'] ?? '',
+  //       email: data?['FirstName'] ?? '',
+  //       phoneNumber: data?['FirstName'] ?? '',
+  //       profilePicture: data?['FirstName'] ?? '',
+  //     );
+  //   }
+  // }
 }

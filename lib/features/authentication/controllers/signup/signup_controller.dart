@@ -1,4 +1,5 @@
 import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
+import 'package:e_store/data/repositories/user/user_repository.dart';
 import 'package:e_store/features/authentication/models/user_model.dart';
 import 'package:e_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
@@ -34,10 +35,16 @@ class SignupController extends GetxController {
 
       // Check Internet Connection
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+        EFullScreenLoader.stopLoading();
+        return;
+      }
 
       // Form Validation
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) {
+        EFullScreenLoader.stopLoading();
+        return;
+      }
 
       // Privacy Policy Check
       if (!privacyPolicy.value) {
@@ -67,6 +74,12 @@ class SignupController extends GetxController {
         profilePicture: '',
       );
 
+      final userRepository = Get.put(UserRepository());
+      await userRepository.saveUserRecord(newUser);
+
+      // Stop Loading
+      EFullScreenLoader.stopLoading();
+
       // Show Success Message
       ELoaders.successSnackBar(
         title: 'Congratulations',
@@ -74,13 +87,13 @@ class SignupController extends GetxController {
       );
 
       // Move to verify email screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
-      // Show some Generic Error to the user
-      ELoaders.errorSnackBar(title: 'Oh snap', message: e.toString());
-    } finally {
       //   Remove Loader
       EFullScreenLoader.stopLoading();
+
+      // Show some Generic Error to the user
+      ELoaders.errorSnackBar(title: 'Oh snap', message: e.toString());
     }
   }
 }
