@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
@@ -111,6 +112,34 @@ class AuthenticationRepository extends GetxController {
   /* -------------------- Federated identity & social sign-in -------------------- */
 
   /// [GoogleAuthentication] - GOOGLE
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      // Trigger the Authentication flow
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+
+      // Crate a new credential
+      final credentials = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+      // Once sign in, return the UserCredentials
+      return _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw EFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw EFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const EFormatException();
+    } on PlatformException catch (e) {
+      throw EPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Some thing went wrong. Please try again';
+    }
+  }
+
   /// [FacebookAuthentication] - FACEBOOK
 
   /* -------------------- ./end Federated identity & social sign-in -------------------- */
@@ -118,6 +147,7 @@ class AuthenticationRepository extends GetxController {
   /// [LogoutUser] - Valid for any Authentication
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
