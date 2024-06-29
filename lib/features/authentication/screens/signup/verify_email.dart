@@ -1,6 +1,5 @@
-import 'package:e_store/common/widgets/success_screen/success_screen.dart';
+import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/features/authentication/controllers/signup/verify_email_controller.dart';
-import 'package:e_store/features/authentication/screens/login/login.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
@@ -28,7 +27,7 @@ class VerifyEmailScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(() => const LoginScreen()),
+            onPressed: () => AuthenticationRepository.instance.logout(),
             icon: const Icon(CupertinoIcons.clear),
             padding: const EdgeInsets.only(right: ESizes.defaultSpace),
           ),
@@ -67,17 +66,13 @@ class VerifyEmailScreen extends StatelessWidget {
 
               const SizedBox(height: ESizes.spaceBtwSections),
 
-              /// Button
+              /// Buttons
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   child: const Text(ETexts.eContinue),
-                  onPressed: () => Get.to(() => SuccessScreen(
-                        image: EImages.staticSuccessIllustration,
-                        title: ETexts.yourAccountCreatedTitle,
-                        subtitle: ETexts.yourAccountCreatedSubTitle,
-                        onPressed: () => Get.offAll(() => const LoginScreen()),
-                      )),
+                  onPressed: () =>
+                      () => controller.checkEmailVerificationStatus(),
                 ),
               ),
               const SizedBox(height: ESizes.spaceBtwItems),
@@ -85,7 +80,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                   child: const Text(ETexts.resendEmail),
-                  onPressed: () {},
+                  onPressed: () => controller.sendEmailVerification(),
                 ),
               ),
             ],

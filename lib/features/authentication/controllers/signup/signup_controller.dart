@@ -24,6 +24,17 @@ class SignupController extends GetxController {
   final phoneNumber = TextEditingController(); // Controller for phoneNo input
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
+  @override
+  void onClose() {
+    super.onClose();
+    firstName.dispose();
+    lastName.dispose();
+    userName.dispose();
+    email.dispose();
+    phoneNumber.dispose();
+    password.dispose();
+  }
+
   /// Signup
   void signup() async {
     try {
