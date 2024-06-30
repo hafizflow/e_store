@@ -1,3 +1,5 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_store/utils/formatters/formatter.dart';
 
 /// Model class represent model data
@@ -62,25 +64,29 @@ class UserModel {
       'LastName': lastName,
       'UserName': userName,
       'Email': email,
-      'Phone': phoneNumber,
+      'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
     };
   }
 
   /// Factory method to crate UserModel from a Firebase document snapshot.
-  // factory UserModel.fromSnapshot(
-  //     DocumentSnapshot<Map<String, dynamic>> document) {
-  //   if (document.data() != null) {
-  //     final data = document.data();
-  //     return UserModel(
-  //       id: document.id,
-  //       firstName: data?['FirstName'] ?? '',
-  //       lastName: data?['FirstName'] ?? '',
-  //       userName: data?['FirstName'] ?? '',
-  //       email: data?['FirstName'] ?? '',
-  //       phoneNumber: data?['FirstName'] ?? '',
-  //       profilePicture: data?['FirstName'] ?? '',
-  //     );
-  //   }
-  // }
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+
+      // log(data.toString());
+      return UserModel(
+        id: document.id,
+        firstName: data['FirstName'] ?? '',
+        lastName: data['LastName'] ?? '',
+        userName: data['UserName'] ?? '',
+        email: data['Email'] ?? '',
+        phoneNumber: data['PhoneNumber'] ?? '',
+        profilePicture: data['ProfilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
+  }
 }

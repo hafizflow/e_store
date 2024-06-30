@@ -1,10 +1,14 @@
+
 import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/images/e_circular_image.dart';
 import 'package:e_store/common/widgets/texts/section_heading.dart';
+import 'package:e_store/features/authentication/screens/change_name/change_name.dart';
+import 'package:e_store/features/personalization/controllers/user_controller.dart';
 import 'package:e_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,6 +16,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       /// -- Appbar
       appBar: EAppBar(
@@ -59,12 +65,12 @@ class ProfileScreen extends StatelessWidget {
 
               EProfileMenu(
                 title: 'Name',
-                value: 'Hafizur Rahman',
-                onPressed: () {},
+                value: controller.user.value.fullName,
+                onPressed: () => Get.off(() => const ChangeName()),
               ),
               EProfileMenu(
                 title: 'Username',
-                value: 'Hafizur Rahman',
+                value: controller.user.value.userName,
                 onPressed: () {},
               ),
 
@@ -81,18 +87,18 @@ class ProfileScreen extends StatelessWidget {
 
               EProfileMenu(
                 title: 'User ID',
-                value: '56789',
+                value: controller.user.value.id,
                 onPressed: () {},
                 icon: Iconsax.copy,
               ),
               EProfileMenu(
                 title: 'Email',
-                value: 'rahman45@gmail.com',
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
               EProfileMenu(
                 title: 'Phone No',
-                value: '0123456789',
+                value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
               EProfileMenu(
