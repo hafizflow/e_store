@@ -36,10 +36,14 @@ class EBillingAddressSection extends StatelessWidget {
           children: [
             const Icon(Icons.location_history, size: 16, color: Colors.grey),
             const SizedBox(width: ESizes.spaceBtwItems),
-            Text(
-              'Dendabor 1344 Pollibidut, Savar, Dhaka, BD',
-              style: Theme.of(context).textTheme.bodyMedium,
-              softWrap: true,
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width * 0.73,
+              child: Text(
+                'Dendabor 1344 Pollibidut, Savar, Dhaka, BD',
+                style: Theme.of(context).textTheme.bodyMedium,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
             ),
           ],
         ),

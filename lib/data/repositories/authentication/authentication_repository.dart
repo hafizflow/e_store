@@ -108,6 +108,21 @@ class AuthenticationRepository extends GetxController {
 
   /// [EmailAuthentication] - ReAuthenticate User
   /// [EmailAuthentication] - FORGET PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw EFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw EFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const EFormatException();
+    } on PlatformException catch (e) {
+      throw EPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Some thing went wrong. Please try again';
+    }
+  }
 
   /* -------------------- Federated identity & social sign-in -------------------- */
 
@@ -136,7 +151,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw EPlatformException(e.code).message;
     } catch (e) {
-      throw 'Some thing went wrong. Please try again';
+      throw 'Some thing went wrong: $e';
     }
   }
 

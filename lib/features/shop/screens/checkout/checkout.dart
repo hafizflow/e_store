@@ -72,7 +72,7 @@ class CheckoutScreen extends StatelessWidget {
           onPressed: () => Get.to(
             () => SuccessScreen(
               image: EImages.successfulPaymentIcon,
-              title: 'Payment Successfull',
+              title: 'Payment Successful',
               subtitle: 'Your item will be shipped soon',
               onPressed: () => Get.to(() => const NavigationMenu()),
             ),

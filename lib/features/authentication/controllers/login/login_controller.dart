@@ -27,12 +27,6 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
-    email.dispose();
-    password.dispose();
-  }
-
   /// -- Email and Password SignIn
   Future<void> emailAndPasswordSignIn() async {
     try {

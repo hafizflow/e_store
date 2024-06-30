@@ -8,14 +8,17 @@ import '../../../utils/constants/text_strings.dart';
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({
     super.key,
-    required this.image,
+    this.animation,
     required this.title,
     required this.subtitle,
     this.onPressed,
+    this.image,
   });
 
-  final String image, title, subtitle;
+  final String title, subtitle;
   final VoidCallback? onPressed;
+  final String? image;
+  final String? animation;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +28,18 @@ class SuccessScreen extends StatelessWidget {
           padding: ESpacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
-              /// Image
-              Lottie.asset(
-                image, // Show lottie animation
-                width: MediaQuery.of(context).size.width * .6,
-              ),
+              image != null
+                  ?
+
+                  /// Image
+                  Image.asset(image!)
+                  :
+
+                  /// Animation
+                  Lottie.asset(
+                      animation!, // Show lottie animation
+                      width: MediaQuery.of(context).size.width * .6,
+                    ),
               const SizedBox(height: ESizes.spaceBtwSections),
 
               /// Title & SubTitle

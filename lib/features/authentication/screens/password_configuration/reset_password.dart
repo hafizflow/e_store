@@ -1,3 +1,5 @@
+import 'package:e_store/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:e_store/features/authentication/screens/login/login.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +8,15 @@ import 'package:get/route_manager.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/text_strings.dart';
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key, required this.email});
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ForgetPasswordController.instance;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -30,7 +36,14 @@ class ResetPassword extends StatelessWidget {
               ),
               const SizedBox(height: ESizes.spaceBtwSections),
 
-              /// Title and subtitle
+              /// Email, Title and subtitle
+              Text(
+                email,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: ESizes.spaceBtwSections),
+
               Text(
                 ETexts.changeYourPasswordTitle,
                 style: Theme.of(context).textTheme.headlineMedium,
@@ -50,16 +63,17 @@ class ResetPassword extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   child: const Text(ETexts.done),
-                  onPressed: () {},
+                  onPressed: () => Get.offAll(() => const LoginScreen()),
                 ),
               ),
               const SizedBox(height: ESizes.spaceBtwItems),
 
+              /// Resend email
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
                   child: const Text(ETexts.resendEmail),
-                  onPressed: () {},
+                  onPressed: () => controller.reSendPasswordResetEmail(email),
                 ),
               ),
             ],
