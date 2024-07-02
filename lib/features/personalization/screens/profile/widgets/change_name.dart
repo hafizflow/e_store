@@ -1,12 +1,12 @@
 import 'package:e_store/common/widgets/appbar/appbar.dart';
-import 'package:e_store/features/authentication/controllers/change_name/change_name_controller.dart';
+import 'package:e_store/features/personalization/controllers/change_name_controller.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/utils/validators/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/constants/text_strings.dart';
 
 class ChangeName extends StatelessWidget {
   const ChangeName({super.key});

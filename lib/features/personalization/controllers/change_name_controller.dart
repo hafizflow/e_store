@@ -4,10 +4,10 @@ import 'package:e_store/features/personalization/screens/profile/profile_screen.
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/services/network_manager.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/popups/full_screen_loader.dart';
-import '../../../../utils/popups/loaders.dart';
+import '../../../data/services/network_manager.dart';
+import '../../../utils/constants/image_strings.dart';
+import '../../../utils/popups/full_screen_loader.dart';
+import '../../../utils/popups/loaders.dart';
 
 class ChangeNameController extends GetxController {
   static ChangeNameController get instance => Get.find();

@@ -1,3 +1,4 @@
+import 'package:e_store/data/repositories/user/user_repository.dart';
 import 'package:e_store/features/authentication/screens/login/login.dart';
 import 'package:e_store/features/authentication/screens/onBoarding/onboarding.dart';
 import 'package:e_store/features/authentication/screens/signup/verify_email.dart';
@@ -110,6 +111,27 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [EmailAuthentication] - ReAuthenticate User
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      // Create Credential
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      // ReAuthenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw EFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw EFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const EFormatException();
+    } on PlatformException catch (e) {
+      throw EPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Some thing went wrong. Please try again';
+    }
+  }
 
   /// [EmailAuthentication] - FORGET PASSWORD
   Future<void> sendPasswordResetEmail(String email) async {
@@ -185,4 +207,20 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [DeleteUser] - Remove user Auth and Firebase account
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      throw EFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw EFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const EFormatException();
+    } on PlatformException catch (e) {
+      throw EPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Some thing went wrong. Please try again';
+    }
+  }
 }
