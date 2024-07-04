@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../features/personalization/controllers/user_controller.dart';
@@ -19,12 +20,17 @@ class EUserProfileTile extends StatelessWidget {
     final controller = UserController.instance;
 
     return ListTile(
-      leading: const ECircularImage(
-        image: EImages.user,
-        padding: 0,
-        width: 50,
-        height: 50,
-      ),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isEmpty ? EImages.user : networkImage;
+        return ECircularImage(
+          isNetworkImage: networkImage.isNotEmpty ? true : false,
+          image: image,
+          padding: 0,
+          width: 50,
+          height: 50,
+        );
+      }),
       title: Text(
         controller.user.value.fullName,
         style: Theme.of(context)

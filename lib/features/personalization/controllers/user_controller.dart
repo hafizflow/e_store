@@ -8,6 +8,7 @@ import 'package:e_store/utils/popups/loaders.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../data/services/network_manager.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -20,6 +21,7 @@ class UserController extends GetxController {
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
   Rx<UserModel> user = UserModel.empty().obs;
   final userRepository = Get.put(UserRepository());
@@ -53,6 +55,9 @@ class UserController extends GetxController {
   /// Save user Record from any Registration provider
   Future<void> saveUserRecord(UserCredential? userCredential) async {
     try {
+      // First update Rx User and then and then check if user data is already stored. If not stored new data
+      await fetchUserRecord();
+
       if (userCredential != null) {
         // Convert Name of First Name and Last Name
         final nameParts =
@@ -169,6 +174,39 @@ class UserController extends GetxController {
     } catch (e) {
       EFullScreenLoader.stopLoading();
       ELoaders.warningSnackBar(title: 'Oh snap', message: e.toString());
+    }
+  }
+
+  /// Upload User profile picture
+  Future<void> uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxWidth: 512,
+        maxHeight: 512,
+      );
+      if (image != null) {
+        imageUploading.value = true;
+        // Upload Image
+        final imageUrl =
+            await userRepository.uploadImage("User/Images/Profile/", image);
+
+        // Update User Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+
+        ELoaders.successSnackBar(
+            title: 'Congratulations', message: 'Your Profile has been update');
+      }
+    } catch (e) {
+      ELoaders.errorSnackBar(
+          title: 'Oh snap', message: 'Some thing went wrong: $e');
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

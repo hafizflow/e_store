@@ -1,5 +1,6 @@
 import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/images/e_circular_image.dart';
+import 'package:e_store/common/widgets/shimmer_effect/shimmer.dart';
 import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:e_store/features/personalization/controllers/user_controller.dart';
@@ -38,13 +39,23 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const ECircularImage(
-                      image: EImages.user,
-                      width: 80,
-                      height: 80,
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image =
+                          networkImage.isEmpty ? EImages.user : networkImage;
+                      return controller.imageUploading.value
+                          ? const EShimmerEffect(
+                              width: 80, height: 80, radius: 80)
+                          : ECircularImage(
+                              isNetworkImage:
+                                  networkImage.isNotEmpty ? true : false,
+                              image: image,
+                              width: 80,
+                              height: 80,
+                            );
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Change Profile Picture'))
                   ],
                 ),
