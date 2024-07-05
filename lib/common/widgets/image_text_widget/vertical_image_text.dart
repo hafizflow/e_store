@@ -1,3 +1,4 @@
+import 'package:e_store/common/widgets/images/e_circular_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -10,11 +11,13 @@ class EVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = EColors.white,
+    this.isNetworkImage = true,
     this.backgroundColor,
     this.onTap,
   });
 
   final String image, title;
+  final bool isNetworkImage;
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
@@ -39,10 +42,14 @@ class EVerticalImageText extends StatelessWidget {
                     backgroundColor ?? (dark ? EColors.black : EColors.white),
               ),
               child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  color: (dark ? EColors.light : EColors.dark),
+                child: ECircularImage(
+                  image: image,
+                  fit: BoxFit.fitWidth,
+                  padding: ESizes.sm * 1.4,
+                  isNetworkImage: isNetworkImage,
+                  overlayColor: EHelperFunctions.isDarkMode(context)
+                      ? EColors.light
+                      : EColors.dark,
                 ),
               ),
             ),
@@ -51,6 +58,7 @@ class EVerticalImageText extends StatelessWidget {
               width: 55,
               child: Text(
                 title,
+                textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
                     .labelMedium!

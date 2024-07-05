@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_store/common/widgets/shimmer_effect/shimmer.dart';
-import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -17,7 +16,7 @@ class ECircularImage extends StatelessWidget {
     this.padding = ESizes.sm,
     this.isNetworkImage = false,
     required this.image,
-    this.fit = BoxFit.fill,
+    this.fit = BoxFit.cover,
   });
 
   final Color? overlayColor;
