@@ -1,16 +1,8 @@
 # e_store
 
-A new Flutter e-commerce project. Made with Flutter, Dart, Firebase and GetX.
+A new Flutter e-commerce project. It is made with Flutter, Dart, Firebase, and GetX.
 
-## Getting Started
+## Preview
 
-This project is a starting point for a Flutter application.
+<img width="554" alt="Screenshot 2024-07-31 at 1 18 10 PM" src="https://github.com/user-attachments/assets/d4cda229-862e-4138-aa79-1b8bfa4e4eb3">
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
